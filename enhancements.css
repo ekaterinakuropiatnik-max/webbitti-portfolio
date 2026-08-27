@@ -1,0 +1,8 @@
+.proof{display:grid;grid-template-columns:repeat(4,1fr);padding:0 var(--pad);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof span{padding:20px 18px;border-right:1px solid var(--line);font:600 11px Manrope;letter-spacing:.12em;text-transform:uppercase;color:#c6c9cc}
+.proof span:first-child{padding-left:0}.proof span:last-child{border-right:0}
+.project-note{max-width:720px;margin:42px 0 0;color:var(--muted);font-size:14px}
+.contact-points{list-style:none;padding:0;margin:28px 0 34px;color:#c9cbce}.contact-points li{padding:9px 0;border-bottom:1px solid var(--line)}.contact-points li:before{content:"✓";color:var(--lime);margin-right:12px}
+.legal{max-width:840px;margin:0 auto;padding:100px 24px 140px}.legal h1{font-size:clamp(44px,7vw,76px);margin-bottom:55px}.legal h2{font-size:26px;margin:48px 0 16px}.legal p,.legal li{color:#b7b9bd}.legal nav{display:block;margin-bottom:60px}.legal nav a{color:var(--lime)}.legal .notice{padding:20px;border:1px solid var(--line);background:var(--panel)}
+@media(max-width:800px){.proof{grid-template-columns:1fr 1fr}.proof span{border-bottom:1px solid var(--line)}.proof span:nth-child(2){border-right:0}.proof span:nth-last-child(-n+2){border-bottom:0}}
+@media(max-width:520px){.proof{grid-template-columns:1fr}.proof span,.proof span:first-child{padding:15px 0;border-right:0;border-bottom:1px solid var(--line)}.proof span:nth-last-child(2){border-bottom:1px solid var(--line)}}
