@@ -3,6 +3,7 @@
 .proof span:first-child{padding-left:0}.proof span:last-child{border-right:0}
 .project-note{max-width:720px;margin:42px 0 0;color:var(--muted);font-size:14px}
 .contact-points{list-style:none;padding:0;margin:28px 0 34px;color:#c9cbce}.contact-points li{padding:9px 0;border-bottom:1px solid var(--line)}.contact-points li:before{content:"✓";color:var(--lime);margin-right:12px}
+.contact-highlight{display:inline-block;margin:18px 0 0;padding:9px 13px;border:1px solid rgba(200,255,101,.38);border-radius:3px;background:rgba(200,255,101,.07);color:var(--lime)!important;font:600 13px/1.4 Manrope,sans-serif}.contact .form-hint{display:block;margin-top:9px;color:#85898f;font-size:11px;line-height:1.5}
 .project-info h3{font-size:clamp(28px,3.4vw,44px)}
 .project-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}.project-info .project-actions a{margin-top:0}.project-actions .project-live{display:inline-flex;padding:11px 15px;border:1px solid var(--lime);border-radius:3px;color:var(--lime);text-decoration:none}.project-actions .project-live:hover{background:var(--lime);color:#0b1005}
 .brand>.brand-copy{display:flex;flex-direction:column;place-items:initial;width:auto;height:auto;border:0;border-radius:0;padding:0;color:var(--lime);font:600 15px/1 Manrope,sans-serif;letter-spacing:0;text-transform:none}.brand-copy small{margin-top:5px;color:var(--muted);font:500 9px/1.15 Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
