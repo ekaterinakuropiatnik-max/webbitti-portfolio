@@ -1,0 +1,113 @@
+/* Premium campaign scene: promise, centered price and a living proof-of-work preview. */
+body { overflow-x: hidden; }
+.hero {
+  max-width: 1320px;
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(245px, .55fr) minmax(390px, 1fr);
+  grid-template-areas:
+    "copy offer showcase"
+    "benefits benefits benefits";
+  gap: 34px;
+  padding-top: clamp(58px, 7vw, 92px);
+  align-items: center;
+  overflow: visible;
+}
+
+.hero-copy { grid-area: copy; text-align: left; }
+.hero-copy .eyebrow { justify-content: flex-start; }
+.hero-copy::after { margin-left: 0; }
+.hero h1 { font-size: clamp(44px, 4vw, 64px); line-height: 1.03; }
+.hero .intro { margin: 0; font-size: 18px; }
+
+.offer-card {
+  grid-area: offer;
+  width: auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 30px 24px;
+  text-align: center;
+  border: 0;
+  border-radius: 130px 130px 18px 18px;
+  background: linear-gradient(165deg, rgba(255,255,255,.96), rgba(235,242,245,.9));
+  box-shadow: 0 26px 70px rgba(23,59,81,.18), inset 0 0 0 1px rgba(40,83,107,.14);
+  animation: price-float 5s ease-in-out infinite;
+}
+.offer-card::before { border: 0; }
+.offer-price { padding: 22px 0 0; border: 0; }
+.offer-label { font-size: 11px; }
+.old-price, .current-price { border: 0; }
+.current-price strong { font-size: clamp(58px, 5vw, 76px); color: var(--wine); }
+.tax-note { font-size: 11px; line-height: 1.35; }
+.offer-action { width: 100%; }
+.offer-action .button { min-height: 58px; border-radius: 8px; box-shadow: 0 10px 24px rgba(23,59,81,.18); }
+
+.hero-showcase {
+  grid-area: showcase;
+  position: relative;
+  transform: perspective(1200px) rotateY(-5deg) rotateX(2deg);
+  transform-origin: center left;
+  border: 1px solid rgba(40,83,107,.24);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 35px 80px rgba(23,59,81,.2);
+  overflow: hidden;
+  animation: showcase-float 7s ease-in-out infinite;
+}
+.browser-bar { height: 42px; display: flex; align-items: center; gap: 7px; padding: 0 14px; background: #f3f6f7; border-bottom: 1px solid var(--line); }
+.browser-bar i { width: 8px; height: 8px; border-radius: 50%; background: #bdc7cc; }
+.browser-bar i:first-child { background: #9e3040; }
+.browser-bar span { margin-left: 8px; color: var(--muted); font: 600 10px Manrope, sans-serif; letter-spacing: .04em; }
+.showcase-screen { position: relative; aspect-ratio: 1.28; overflow: hidden; }
+.showcase-screen::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,.28) 45%, transparent 62%); transform: translateX(-120%); animation: screen-glint 6s 1.2s infinite; }
+.showcase-screen img { width: 100%; height: 118%; object-fit: cover; object-position: top; animation: preview-scroll 9s ease-in-out infinite alternate; }
+.hero-showcase > a { position: absolute; right: 14px; bottom: 14px; z-index: 2; display: flex; gap: 9px; align-items: center; padding: 9px 13px; border-radius: 99px; background: rgba(14,29,40,.9); color: #fff; text-decoration: none; font: 700 11px Manrope, sans-serif; backdrop-filter: blur(8px); }
+.hero-showcase > a span { color: #bde7f5; }
+
+.hero-benefits {
+  grid-area: benefits;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  width: 100%;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--line);
+  background: var(--line);
+  box-shadow: 0 18px 45px rgba(23,59,81,.07);
+}
+.hero-benefits li { position: relative; padding: 18px 18px 18px 42px; background: rgba(255,255,255,.86); font: 600 13px Manrope, sans-serif; }
+.hero-benefits li::before { content: "✓"; position: absolute; left: 19px; color: var(--wine); font-weight: 800; }
+
+@keyframes price-float { 50% { transform: translateY(-8px); box-shadow: 0 34px 80px rgba(23,59,81,.22), inset 0 0 0 1px rgba(40,83,107,.14); } }
+@keyframes showcase-float { 50% { transform: perspective(1200px) rotateY(-2deg) rotateX(0) translateY(-10px); } }
+@keyframes preview-scroll { to { transform: translateY(-14%); } }
+@keyframes screen-glint { 0%,55% { transform: translateX(-120%); } 82%,100% { transform: translateX(120%); } }
+
+@media (max-width: 1060px) {
+  .hero { grid-template-columns: 1fr .72fr; grid-template-areas: "copy offer" "showcase showcase" "benefits benefits"; }
+  .hero-showcase { width: min(760px, 100%); justify-self: center; transform: none; }
+}
+
+@media (max-width: 720px) {
+  .hero { display: flex; align-items: stretch; overflow: hidden; padding-top: 44px; }
+  .hero-copy { text-align: center; }
+  .hero-copy .eyebrow { justify-content: center; }
+  .hero-copy::after { margin-left: auto; }
+  .hero .intro { margin: 0 auto; }
+  .offer-card { width: min(330px, 100%); margin: 0 auto; border-radius: 90px 90px 16px 16px; }
+  .hero-showcase { transform: none; animation: mobile-float 7s ease-in-out infinite; }
+  .hero-benefits { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 440px) {
+  .hero-benefits { grid-template-columns: 1fr; }
+}
+
+@keyframes mobile-float { 50% { transform: translateY(-7px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .offer-card, .hero-showcase, .showcase-screen::after, .showcase-screen img { animation: none; }
+}
