@@ -1,0 +1,26 @@
+.brand .brand-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #c8ff65;
+  filter: drop-shadow(0 0 8px rgba(200,255,101,.24));
+}
+.brand .brand-mark::before { content:""; position:absolute; inset:5px; border-radius:50%; background:conic-gradient(from 0deg,transparent 0 38%,rgba(113,228,255,.34) 48%,transparent 59%); animation:brand-halo 5.8s linear infinite; }
+.brand .brand-mark svg { width:100%; height:100%; overflow:visible; }
+.brand .logo-orbit { fill:none; stroke:currentColor; transform-origin:32px 32px; }
+.brand .logo-orbit.outer { stroke-width:1.25; stroke-dasharray:48 28; animation:brand-spin 8s linear infinite; }
+.brand .logo-orbit.inner { stroke:#71e4ff; stroke-width:1; stroke-dasharray:9 7; animation:brand-spin-reverse 5.5s linear infinite; }
+.brand .logo-w { fill:none; stroke:#c8ff65; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+.brand .logo-spark { fill:#f4fff0; transform-origin:51px 17px; animation:brand-pulse 1.9s ease-in-out infinite; }
+.brand:hover .brand-mark { filter:drop-shadow(0 0 14px rgba(200,255,101,.58)); }
+@keyframes brand-spin { to { transform:rotate(360deg); } }
+@keyframes brand-spin-reverse { to { transform:rotate(-360deg); } }
+@keyframes brand-halo { to { transform:rotate(360deg); } }
+@keyframes brand-pulse { 50% { transform:scale(1.75); opacity:.55; } }
+@media (prefers-reduced-motion:reduce) { .brand .logo-orbit,.brand .logo-spark,.brand .brand-mark::before { animation:none!important; } }

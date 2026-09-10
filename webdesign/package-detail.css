@@ -1,0 +1,8 @@
+.package-card { isolation:isolate; }
+.package-need { min-height:190px; line-height:1.62; }
+.package-result { margin:0 0 15px; padding:14px 16px; border-left:2px solid var(--lime); background:rgba(200,255,101,.055); color:#cfd3d6; font-size:14px; line-height:1.55; }
+.package-result b { color:var(--ink); }
+.package-note { margin:-12px 0 22px; color:var(--muted); font-size:11px; line-height:1.5; }
+.package-price s { margin-left:6px; color:#c5cad0; text-decoration-color:#ff8796; text-decoration-thickness:2px; }
+.package-card .button.full { min-height:58px; padding-inline:16px; text-align:center; line-height:1.25; }
+@media(max-width:980px){.package-need{min-height:0}}
