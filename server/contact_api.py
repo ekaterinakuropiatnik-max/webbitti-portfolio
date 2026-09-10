@@ -47,10 +47,38 @@ class Handler(BaseHTTPRequestHandler):
         company, package, message = safe(data.get("company"), 180) or "—", safe(data.get("package"), 120) or "Individuelle Anfrage", safe(data.get("message"), 4000)
         if len(name) < 2 or not EMAIL_RE.match(email) or len(message) < 10: return self.reply(400, {"ok": False, "message": "Bitte füllen Sie Name, E-Mail und Vorhaben vollständig aus."})
         owner_html = f"<h2>Neue Anfrage über Webbitti</h2><p><b>Name:</b> {name}<br><b>E-Mail:</b> {email}<br><b>Unternehmen:</b> {company}<br><b>Interesse:</b> {package}</p><h3>Vorhaben</h3><p>{message.replace(chr(10), '<br>')}</p>"
-        reply_html = f"<p>Hallo {name},</p><p>vielen Dank für Ihre Anfrage bei Webbitti. Ihre Nachricht ist sicher angekommen.</p><p>Ich sehe mir Ihr Vorhaben persönlich an und melde mich in der Regel innerhalb von 24 Stunden bei Ihnen.</p><p><b>Ihre Anfrage:</b> {package}</p><p>Freundliche Grüße<br>Kateryna Kuropiatnyk<br>Webbitti · Wien</p>"
+        reply_html = f"""<!doctype html>
+<html lang="de"><body style="margin:0;background:#f2f4f6;font-family:Arial,Helvetica,sans-serif;color:#182433">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f2f4f6;padding:28px 12px"><tr><td align="center">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:620px;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(11,13,16,.10)">
+  <tr><td style="background:#0b0d10;padding:26px 34px">
+    <table role="presentation" cellspacing="0" cellpadding="0"><tr>
+      <td><img src="https://webbitti.com/img/favicon.png" width="58" height="58" alt="Webbitti" style="display:block;border:0;border-radius:15px"></td>
+      <td style="padding-left:15px"><div style="color:#c8ff65;font-size:20px;font-weight:700;letter-spacing:.04em">WEBBITTI</div><div style="color:#b9c0c8;font-size:13px;margin-top:4px">Webdesign &amp; digitale Lösungen · Wien</div></td>
+    </tr></table>
+  </td></tr>
+  <tr><td style="padding:38px 34px 12px">
+    <div style="display:inline-block;background:#ecffd0;color:#315800;border-radius:99px;padding:7px 12px;font-size:12px;font-weight:700;letter-spacing:.05em">ANFRAGE ERHALTEN</div>
+    <h1 style="margin:20px 0 14px;font-size:28px;line-height:1.25;color:#111820">Vielen Dank, {name}.</h1>
+    <p style="margin:0 0 16px;font-size:16px;line-height:1.65;color:#4b5866">Ihre Nachricht ist sicher bei Webbitti angekommen. Ich sehe mir Ihr Vorhaben persönlich an und melde mich in der Regel innerhalb von 24 Stunden.</p>
+    <div style="margin:24px 0;background:#f5f7f8;border-left:4px solid #c8ff65;border-radius:8px;padding:16px 18px;color:#273442;font-size:15px"><strong>Ihre Anfrage:</strong><br>{package}</div>
+    <p style="margin:0 0 18px;font-size:15px;line-height:1.55;color:#4b5866">Möchten Sie vorab noch etwas ergänzen? Schreiben Sie mir direkt per WhatsApp.</p>
+    <table role="presentation" cellspacing="0" cellpadding="0"><tr><td style="border-radius:9px;background:#1f7a45">
+      <a href="https://wa.me/4367764757974?text=Hallo%20Kateryna%2C%20ich%20habe%20gerade%20eine%20Anfrage%20über%20Webbitti%20gesendet." style="display:inline-block;padding:15px 23px;color:#ffffff;text-decoration:none;font-size:16px;font-weight:700">Jetzt per WhatsApp schreiben →</a>
+    </td></tr></table>
+  </td></tr>
+  <tr><td style="padding:24px 34px 38px"><p style="margin:0;font-size:15px;line-height:1.6;color:#4b5866">Freundliche Grüße<br><strong style="color:#182433">Kateryna Kuropiatnyk</strong><br>Webbitti · Wien</p></td></tr>
+  <tr><td style="border-top:1px solid #e2e6e9;padding:22px 34px;text-align:center">
+    <a href="https://webbitti.com/" style="display:inline-block;border:1px solid #1a3548;border-radius:8px;padding:11px 18px;color:#1a3548;text-decoration:none;font-size:14px;font-weight:700">Webbitti Website ansehen</a>
+    <p style="margin:14px 0 0;color:#83909b;font-size:12px">webbitti.com · Wien, Österreich</p>
+  </td></tr>
+</table>
+</td></tr></table>
+</body></html>"""
+        reply_text = f"Hallo {name},\n\nvielen Dank für Ihre Anfrage bei Webbitti. Ihre Nachricht ist sicher angekommen. Ich melde mich in der Regel innerhalb von 24 Stunden.\n\nIhre Anfrage: {package}\n\nWhatsApp: https://wa.me/4367764757974\nWebsite: https://webbitti.com/\n\nFreundliche Grüße\nKateryna Kuropiatnyk\nWebbitti · Wien"
         try:
             send_email({"sender":{"name":SENDER_NAME,"email":SENDER_EMAIL},"to":[{"email":OWNER_EMAIL}],"replyTo":{"email":email,"name":name},"subject":f"Neue Webbitti-Anfrage: {package}","htmlContent":owner_html})
-            send_email({"sender":{"name":SENDER_NAME,"email":SENDER_EMAIL},"to":[{"email":email,"name":name}],"replyTo":{"email":OWNER_EMAIL,"name":"Kateryna Kuropiatnyk"},"subject":"Ihre Anfrage ist bei Webbitti angekommen","htmlContent":reply_html})
+            send_email({"sender":{"name":SENDER_NAME,"email":SENDER_EMAIL},"to":[{"email":email,"name":name}],"replyTo":{"email":OWNER_EMAIL,"name":"Kateryna Kuropiatnyk"},"subject":"Ihre Anfrage ist bei Webbitti angekommen","htmlContent":reply_html,"textContent":reply_text})
         except (urllib.error.URLError, RuntimeError, TimeoutError) as error:
             print(f"contact-api provider_error={type(error).__name__}", flush=True)
             return self.reply(502, {"ok":False,"message":"Die Nachricht konnte gerade nicht gesendet werden. Bitte nutzen Sie E-Mail oder WhatsApp."})
