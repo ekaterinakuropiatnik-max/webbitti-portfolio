@@ -1,0 +1,64 @@
+.hero {
+  max-width: var(--max);
+  min-height: 0;
+  margin: auto;
+  padding: clamp(34px, 4vw, 52px) var(--pad) clamp(58px, 7vw, 82px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 900px;
+  text-align: center;
+}
+
+.hero-copy .eyebrow { justify-content: center; }
+.hero h1 {
+  max-width: none;
+  font-size: clamp(40px, 4.2vw, 58px);
+  line-height: 1.06;
+  margin: 18px 0 17px;
+}
+.hero .intro { max-width: 720px; margin: 0 auto; }
+
+.offer-card {
+  width: 100%;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: .82fr 1.25fr .9fr;
+  gap: 34px;
+  align-items: center;
+  padding: 32px 36px;
+}
+
+.offer-card ul {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+}
+
+.offer-card .button { margin: 0; }
+.offer-action { display: flex; flex-direction: column; gap: 10px; text-align: center; }
+.offer-action small { color: var(--muted); font-size: 11px; line-height: 1.35; }
+.offer-label { margin-bottom: 8px; }
+.old-price, .current-price { padding: 8px 0; }
+.current-price strong { font-size: 46px; }
+.tax-note { margin: 9px 0 0; }
+
+@media (max-width: 900px) {
+  .offer-card { max-width: 650px; grid-template-columns: 1fr 1fr; }
+  .offer-action { grid-column: 1 / -1; }
+  .offer-card ul { grid-template-columns: 1fr; }
+  .hero { padding-top: 38px; }
+}
+
+@media (max-width: 620px) {
+  .hero { gap: 28px; padding-top: 42px; }
+  .hero h1 { font-size: clamp(38px, 11vw, 52px); }
+  .offer-card { display: block; padding: 27px 22px; }
+  .offer-card ul { margin: 20px 0; }
+  .offer-action { margin-top: 22px; }
+}
