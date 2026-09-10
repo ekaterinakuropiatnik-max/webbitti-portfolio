@@ -69,13 +69,13 @@ class Handler(BaseHTTPRequestHandler):
   </td></tr>
   <tr><td style="padding:24px 34px 38px"><p style="margin:0;font-size:15px;line-height:1.6;color:#4b5866">Freundliche Grüße<br><strong style="color:#182433">Kateryna Kuropiatnyk</strong><br>Webbitti · Wien</p></td></tr>
   <tr><td style="border-top:1px solid #e2e6e9;padding:22px 34px;text-align:center">
-    <a href="https://webbitti.com/" style="display:inline-block;border:1px solid #1a3548;border-radius:8px;padding:11px 18px;color:#1a3548;text-decoration:none;font-size:14px;font-weight:700">Webbitti Website ansehen</a>
-    <p style="margin:14px 0 0;color:#83909b;font-size:12px">webbitti.com · Wien, Österreich</p>
+    <a href="https://webdesign.webbitti.com/" style="display:inline-block;border:1px solid #1a3548;border-radius:8px;padding:11px 18px;color:#1a3548;text-decoration:none;font-size:14px;font-weight:700">Webbitti Angebot ansehen</a>
+    <p style="margin:14px 0 0;color:#83909b;font-size:12px">webdesign.webbitti.com · Wien, Österreich</p>
   </td></tr>
 </table>
 </td></tr></table>
 </body></html>"""
-        reply_text = f"Hallo {name},\n\nvielen Dank für Ihre Anfrage bei Webbitti. Ihre Nachricht ist sicher angekommen. Ich melde mich in der Regel innerhalb von 24 Stunden.\n\nIhre Anfrage: {package}\n\nWhatsApp: https://wa.me/4367764757974\nWebsite: https://webbitti.com/\n\nFreundliche Grüße\nKateryna Kuropiatnyk\nWebbitti · Wien"
+        reply_text = f"Hallo {name},\n\nvielen Dank für Ihre Anfrage bei Webbitti. Ihre Nachricht ist sicher angekommen. Ich melde mich in der Regel innerhalb von 24 Stunden.\n\nIhre Anfrage: {package}\n\nWhatsApp: https://wa.me/4367764757974\nAngebot: https://webdesign.webbitti.com/\n\nFreundliche Grüße\nKateryna Kuropiatnyk\nWebbitti · Wien"
         try:
             send_email({"sender":{"name":SENDER_NAME,"email":SENDER_EMAIL},"to":[{"email":OWNER_EMAIL}],"replyTo":{"email":email,"name":name},"subject":f"Neue Webbitti-Anfrage: {package}","htmlContent":owner_html})
             send_email({"sender":{"name":SENDER_NAME,"email":SENDER_EMAIL},"to":[{"email":email,"name":name}],"replyTo":{"email":OWNER_EMAIL,"name":"Kateryna Kuropiatnyk"},"subject":"Ihre Anfrage ist bei Webbitti angekommen","htmlContent":reply_html,"textContent":reply_text})
