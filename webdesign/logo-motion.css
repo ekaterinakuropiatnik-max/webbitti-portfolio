@@ -1,0 +1,32 @@
+.brand-mark {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  overflow: visible;
+  filter: drop-shadow(0 0 8px rgba(200,255,101,.28));
+}
+.brand-mark::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,255,101,.2), transparent 68%);
+  box-shadow: 0 0 22px rgba(113,228,255,.24);
+  animation: logo-breathe 2.8s ease-in-out infinite;
+}
+.brand-mark svg { width: 100%; height: 100%; overflow: visible; }
+.logo-orbit { fill: none; stroke: url(#webbitti-glow); stroke-linecap: round; transform-origin: 32px 32px; }
+.logo-orbit.outer { stroke-width: 1.6; stroke-dasharray: 44 14 20 10; animation: logo-spin 8s linear infinite; }
+.logo-orbit.inner { stroke-width: 1; stroke-dasharray: 15 9; opacity: .65; animation: logo-spin-reverse 5s linear infinite; }
+.logo-w { fill: none; stroke: #f4f7f2; stroke-width: 3.6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 5px rgba(200,255,101,.5)); }
+.logo-spark { fill: #c8ff65; filter: drop-shadow(0 0 5px #c8ff65); transform-origin: 32px 32px; animation: logo-spin 4s linear infinite, spark-pulse 1.4s ease-in-out infinite alternate; }
+.brand:hover .brand-mark { filter: drop-shadow(0 0 13px rgba(200,255,101,.55)); }
+.work-track .lorec { background:radial-gradient(circle at 50% 44%,#403528,#17120f 72%); }
+.work-track .lorec img { object-fit:contain; padding:42px; filter:brightness(1.08) contrast(1.05); }
+.work-track .lorec:hover img { transform:scale(1.05); filter:brightness(1.2); }
+@keyframes logo-spin { to { transform:rotate(360deg); } }
+@keyframes logo-spin-reverse { to { transform:rotate(-360deg); } }
+@keyframes logo-breathe { 50% { transform:scale(1.12); opacity:.58; } }
+@keyframes spark-pulse { to { r:4px; } }
+@media (prefers-reduced-motion:reduce) { .logo-orbit,.logo-spark,.brand-mark::before { animation:none!important; } }
