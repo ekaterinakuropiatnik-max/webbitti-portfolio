@@ -53,7 +53,7 @@ class Handler(BaseHTTPRequestHandler):
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:620px;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(11,13,16,.10)">
   <tr><td style="background:#0b0d10;padding:26px 34px">
     <table role="presentation" cellspacing="0" cellpadding="0"><tr>
-      <td><img src="https://webbitti.com/img/favicon.png" width="58" height="58" alt="Webbitti" style="display:block;border:0;border-radius:15px"></td>
+      <td><img src="https://webbitti.com/img/webbitti-mark-email.gif" width="72" height="72" alt="Webbitti" style="display:block;border:0;border-radius:16px"></td>
       <td style="padding-left:15px"><div style="color:#c8ff65;font-size:20px;font-weight:700;letter-spacing:.04em">WEBBITTI</div><div style="color:#b9c0c8;font-size:13px;margin-top:4px">Webdesign &amp; digitale Lösungen · Wien</div></td>
     </tr></table>
   </td></tr>
