@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="landing-return.css?v=1">
   <link rel="stylesheet" href="logo-motion.css?v=1">
   <link rel="stylesheet" href="package-detail.css?v=1">
+  <link rel="stylesheet" href="/cookie-consent.css?v=1">
+  <script src="/tracking-config.js?v=1" defer></script>
+  <script src="/analytics-consent.js?v=1" defer></script>
   <script src="landing.js?v=5" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Webbitti","url":"https://webbitti.com","areaServed":{"@type":"City","name":"Wien"},"makesOffer":[{"@type":"Offer","name":"Business Website","price":"890","priceCurrency":"EUR","validThrough":"2026-10-31"},{"@type":"Offer","name":"Website mit Buchung","price":"1490","priceCurrency":"EUR","validThrough":"2026-10-31"},{"@type":"Offer","name":"Website mit Automation","price":"1990","priceCurrency":"EUR"}]}</script>
 </head>
@@ -86,7 +89,6 @@
           <div class="package-price"><span>Regulärer Preis ab 01.11.2026: <s>€2.290</s></span><strong>€1.490</strong><small>Aktionspreis bis 31.10.2026 · Gesamtpreis</small></div>
           <p class="package-result"><b>Damit sparen Sie:</b> Rückfragen, manuelle Terminabstimmung und wiederholte Bestätigungsmails.</p>
           <ul><li>Alles aus dem Business-Website-Paket</li><li>Terminbuchung oder Anmeldung für Kurse und Events</li><li>Automatische Bestätigung an Kunde und Unternehmen</li><li>Optional: Online-Zahlung oder Anzahlung beim Buchen</li><li>Einrichtung, persönlicher Test und Übergabe</li></ul>
-          <p class="package-note">Gebühren eines gewählten Buchungs- oder Zahlungsanbieters sind nicht im Paketpreis enthalten.</p>
           <a class="button primary full" href="#anfrage" data-package="Website + Buchung">Buchung und Zahlung einrichten</a>
         </article>
         <article class="package-card">
@@ -187,8 +189,14 @@
   <footer>
     <a class="brand" href="https://webbitti.com"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><defs><linearGradient id="webbitti-glow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c8ff65"/><stop offset=".55" stop-color="#71e4ff"/><stop offset="1" stop-color="#c8ff65"/></linearGradient></defs><circle class="logo-orbit outer" cx="32" cy="32" r="27"/><circle class="logo-orbit inner" cx="32" cy="32" r="19"/><path class="logo-w" d="M17 22l7 22 8-15 8 15 7-22"/><circle class="logo-spark" cx="51" cy="17" r="3"/></svg></span><span><b>Webbitti</b><small>by Kateryna Kuropiatnyk</small></span></a>
     <p>Webdesign und Full-Stack-Entwicklung · Wien</p>
-    <nav aria-label="Rechtliches"><a href="https://webbitti.com/impressum.html">Impressum</a><a href="https://webbitti.com/datenschutz.html">Datenschutz</a></nav>
+    <nav aria-label="Rechtliches"><a href="https://webbitti.com/impressum.html">Impressum</a><a href="https://webbitti.com/datenschutz.html">Datenschutz</a><button class="cookie-settings-link" type="button" data-cookie-settings>Cookie-Einstellungen</button></nav>
     <small>© <span id="year"></span> Webbitti.com</small>
   </footer>
+  <section class="cookie-panel" data-cookie-panel hidden aria-labelledby="cookie-title">
+    <div class="cookie-panel-copy"><p class="package-kicker">Ihre Privatsphäre</p><h2 id="cookie-title">Cookies selbst bestimmen</h2><p>Notwendige Funktionen sind immer aktiv. Analyse und Werbung starten nur mit Ihrer Zustimmung und helfen uns, Kampagnen und Anfragen zu verbessern.</p></div>
+    <div class="cookie-options" data-cookie-options hidden><label><input type="checkbox" checked disabled> Notwendig</label><label><input type="checkbox" data-consent-analytics> Analyse</label><label><input type="checkbox" data-consent-marketing> Werbung</label></div>
+    <div class="cookie-actions"><button class="button secondary" type="button" data-cookie-reject>Nur notwendige</button><button class="button secondary" type="button" data-cookie-customize>Einstellen</button><button class="button primary" type="button" data-cookie-accept>Alle akzeptieren</button><button class="button primary" type="button" data-cookie-save hidden>Auswahl speichern</button></div>
+    <a class="cookie-privacy" href="https://webbitti.com/datenschutz.html">Mehr zum Datenschutz</a>
+  </section>
 </body>
 </html>

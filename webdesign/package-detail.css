@@ -2,7 +2,6 @@
 .package-need { min-height:190px; line-height:1.62; }
 .package-result { margin:0 0 15px; padding:14px 16px; border-left:2px solid var(--lime); background:rgba(200,255,101,.055); color:#cfd3d6; font-size:14px; line-height:1.55; }
 .package-result b { color:var(--ink); }
-.package-note { margin:-12px 0 22px; color:var(--muted); font-size:11px; line-height:1.5; }
 .package-price s { margin-left:6px; color:#c5cad0; text-decoration-color:#ff8796; text-decoration-thickness:2px; }
 .package-card .button.full { min-height:58px; padding-inline:16px; text-align:center; line-height:1.25; }
 .custom-project-cta { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:36px; align-items:center; margin-top:36px; padding:30px 32px; border:1px solid var(--line); background:linear-gradient(105deg,rgba(200,255,101,.08),rgba(113,228,255,.035) 55%,#101419); }
@@ -13,3 +12,4 @@
 .custom-project-actions .button { white-space:nowrap; }
 @media(max-width:980px){.package-need{min-height:0}}
 @media(max-width:760px){.custom-project-cta{grid-template-columns:1fr;padding:26px 22px}.custom-project-actions{justify-content:flex-start}.custom-project-actions .button{flex:1 1 210px;text-align:center}}
+@media(hover:hover){.feature-list article:hover,.fit-card:hover,.process li:hover{background:#151a20;color:var(--ink);box-shadow:0 16px 36px rgba(0,0,0,.3)}.feature-list article:hover p,.fit-card:hover li,.process li:hover p{color:#c6cbd0}}
