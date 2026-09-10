@@ -14,3 +14,4 @@
 @media(max-width:760px){.custom-project-cta{grid-template-columns:1fr;padding:26px 22px}.custom-project-actions{justify-content:flex-start}.custom-project-actions .button{flex:1 1 210px;text-align:center}}
 @media(hover:hover){.feature-list article:hover,.fit-card:hover,.process li:hover{background:rgba(255,255,255,.94);color:#162433;box-shadow:0 16px 36px rgba(0,0,0,.3)}.feature-list article:hover h3,.fit-card:hover h3,.process li:hover h3,.feature-list article:hover p,.fit-card:hover li,.process li:hover p{color:#162433}.feature-list article:hover>b,.fit-card:hover>p,.process li:hover>b{color:#28536b}.fit-card:hover li{border-color:#c9d0d5}}
 @media(prefers-reduced-motion:reduce){.work-track{animation:portfolio-flow 50s linear infinite!important;transform:none}}
+@media(max-width:980px){.offer-grid .package-card,.offer-grid .package-card.featured{order:initial}}
