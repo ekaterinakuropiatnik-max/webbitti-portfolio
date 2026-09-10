@@ -17,6 +17,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 document.querySelectorAll('[data-package]').forEach((link) => {
   link.addEventListener('click', () => {
     const message = document.querySelector('textarea[name="message"]');
+    const packageField = document.querySelector('input[name="package"]');
+    if (packageField) packageField.value = link.dataset.package;
     if (message && !message.value.trim()) {
       message.value = `Ich interessiere mich für: ${link.dataset.package}.\n\nKurz zu meinem Vorhaben: `;
     }
@@ -37,15 +39,37 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   revealItems.forEach((item) => revealObserver.observe(item));
 }
 
-document.querySelector('#landing-form').addEventListener('submit', (event) => {
+const landingForm = document.querySelector('#landing-form');
+landingForm.elements.startedAt.value = Date.now();
+landingForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const data = new FormData(event.currentTarget);
-  const subject = encodeURIComponent('Anfrage: Webbitti Business-Website €890');
-  const body = encodeURIComponent(
-    `Name: ${data.get('name')}\n` +
-    `E-Mail: ${data.get('email')}\n` +
-    `Unternehmen / Branche: ${data.get('company') || '—'}\n\n` +
-    `Vorhaben:\n${data.get('message')}`
-  );
-  window.location.href = `mailto:kuropiatnyk.design@gmail.com?subject=${subject}&body=${body}`;
+  const button = event.currentTarget.querySelector('button[type="submit"]');
+  const buttonText = button.querySelector('span');
+  const status = event.currentTarget.querySelector('.form-status');
+  const data = Object.fromEntries(new FormData(event.currentTarget).entries());
+  button.disabled = true;
+  buttonText.textContent = 'Anfrage wird gesendet …';
+  status.className = 'form-status wide';
+  status.textContent = '';
+  try {
+    const response = await fetch('/api/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.ok) throw new Error(result.message || 'Die Nachricht konnte nicht gesendet werden.');
+    status.classList.add('success');
+    status.textContent = result.message;
+    event.currentTarget.reset();
+    event.currentTarget.elements.startedAt.value = Date.now();
+    event.currentTarget.elements.package.value = 'Individuelle Anfrage';
+    if (window.gtag) {
+      window.gtag('event', 'generate_lead', { form_id:'landing-form', value:1, currency:'EUR' });
+      const tracking = window.WEBBITTI_TRACKING || {};
+      if (tracking.adsId && tracking.conversionLabel) window.gtag('event', 'conversion', { send_to:`${tracking.adsId}/${tracking.conversionLabel}` });
+    }
+  } catch (error) {
+    status.classList.add('error');
+    status.innerHTML = `${error.message} <a href="mailto:kuropiatnyk.design@gmail.com">E-Mail schreiben</a> oder <a href="https://wa.me/4367764757974">WhatsApp öffnen</a>.`;
+  } finally {
+    button.disabled = false;
+    buttonText.textContent = 'Kostenloses Erstgespräch anfragen';
+  }
 });

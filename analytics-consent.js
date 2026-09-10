@@ -62,5 +62,4 @@
     if (href.includes('wa.me/')) name = 'whatsapp_click';
     if (name) window.gtag('event', name, { link_text:(link.textContent || '').trim().slice(0,80), link_url:href });
   });
-  document.querySelectorAll('form').forEach((form) => form.addEventListener('submit', () => window.gtag('event', 'generate_lead', { form_id:form.id || 'contact' }), { capture:true }));
 })();
