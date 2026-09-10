@@ -14,6 +14,15 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   }, 1200);
 }
 
+document.querySelectorAll('[data-package]').forEach((link) => {
+  link.addEventListener('click', () => {
+    const message = document.querySelector('textarea[name="message"]');
+    if (message && !message.value.trim()) {
+      message.value = `Ich interessiere mich für: ${link.dataset.package}.\n\nKurz zu meinem Vorhaben: `;
+    }
+  });
+});
+
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const revealItems = document.querySelectorAll('.trust-strip, .section');
   document.body.classList.add('reveal-ready');
