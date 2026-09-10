@@ -23,4 +23,9 @@
 @keyframes brand-spin-reverse { to { transform:rotate(-360deg); } }
 @keyframes brand-halo { to { transform:rotate(360deg); } }
 @keyframes brand-pulse { 50% { transform:scale(1.75); opacity:.55; } }
-@media (prefers-reduced-motion:reduce) { .brand .logo-orbit,.brand .logo-spark,.brand .brand-mark::before { animation:none!important; } }
+@media (prefers-reduced-motion:reduce) {
+  .brand .logo-orbit.outer { animation:brand-spin 8s linear infinite!important; }
+  .brand .logo-orbit.inner { animation:brand-spin-reverse 5.5s linear infinite!important; }
+  .brand .logo-spark { animation:brand-pulse 1.9s ease-in-out infinite!important; }
+  .brand .brand-mark::before { animation:brand-halo 5.8s linear infinite!important; }
+}
